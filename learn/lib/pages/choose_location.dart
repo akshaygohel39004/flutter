@@ -12,7 +12,25 @@ class _ChooseLocationState extends State<ChooseLocation> {
 
   int counter=0;
 
+  Future<void> getData() async {
+    //simulate network request
 
+    String s=await Future.delayed(Duration(seconds: 20),() {
+      print("after 20 second");
+      return "this is";
+    });
+
+    print(s);
+    Future.delayed(Duration(seconds: 10),() {
+      print("after 10 second");
+    });
+
+    Future.delayed(Duration(seconds: 5),(){
+      print("after 5 second");
+    });
+
+    print("hello");
+  }
 
 
 
@@ -20,6 +38,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
   void initState(){
     super.initState();
     print('initState function called');
+    getData();
   }
 
   @override
