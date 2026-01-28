@@ -4,7 +4,9 @@ import '../models/city.dart';
 import '../services/city_service.dart';
 
 class CityProvider extends ChangeNotifier {
-  final CityService _service = CityService();
+  final CityService _service;
+  final Logger _logger;
+  CityProvider({required CityService service,required Logger logger}):_service=service,_logger=logger;
 
   List<City> _cities = [];
   bool _isLoading = false;
@@ -15,9 +17,8 @@ class CityProvider extends ChangeNotifier {
   String? get error => _error;
 
   Future<void> fetchCities() async {
-    Logger logger=Logger();
 
-    logger.i("loading starts");
+    _logger.i("loading starts");
     _isLoading = true;
     _error = null;
     notifyListeners();
@@ -25,16 +26,16 @@ class CityProvider extends ChangeNotifier {
 
     try {
 
-      logger.i("start calling to fetchCities service method");
+      _logger.i("start calling to fetchCities service method");
       _cities = await _service.fetchCities();
-      logger.i("fetchCities service method call successfully  completed");
+      _logger.i("fetchCities service method call successfully  completed");
     } catch (e) {
-      logger.e("error: "+e.toString());
+      _logger.e("error: "+e.toString());
       _error = e.toString();
     }
 
     _isLoading = false;
-    logger.i("loading stops");
+    _logger.i("loading stops");
     notifyListeners();
   }
 }

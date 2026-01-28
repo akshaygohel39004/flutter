@@ -7,8 +7,9 @@ import 'package:logger/logger.dart';
 
 
 class CityService {
+  final Logger logger;
+  CityService({required this.logger});
   Future<List<City>> fetchCities() async {
-    Logger logger=Logger();
     final response = await http.get(Uri.parse(ApiConfig.baseUrl+'/api/cities'));
     if (response.statusCode == 200) {
       final List data = jsonDecode(response.body);

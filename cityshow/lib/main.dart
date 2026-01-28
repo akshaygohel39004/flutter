@@ -1,29 +1,9 @@
+import 'package:cityshow/core/app_initializer.dart';
+import 'package:cityshow/root_app.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:provider/provider.dart';
-import 'providers/city_provider.dart';
-import 'screens/city_list_screen.dart';
+
 
 void main() async{
-  await dotenv.load(fileName: ".env");
-
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => CityProvider()..fetchCities(),
-      child: const MyApp(),
-    ),
-  );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
-      home: const CityListScreen(),
-    );
-  }
+  await AppInitializer.init();
+  runApp(RootApp());
 }
