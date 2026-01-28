@@ -1,3 +1,4 @@
+import 'package:cityshow/views/empty_cities_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/city_provider.dart';
@@ -20,6 +21,10 @@ class CityListScreen extends StatelessWidget {
 
           if (provider.error != null) {
             return Center(child: Text(provider.error!));
+          }
+
+          if (provider.cities.isEmpty){
+            return EmptyCitiesView(fetchCities: provider.fetchCities);
           }
 
           return ListView.builder(
