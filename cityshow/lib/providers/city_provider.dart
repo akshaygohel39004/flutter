@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import '../models/city.dart';
 import '../services/city_service.dart';
 
@@ -14,21 +15,26 @@ class CityProvider extends ChangeNotifier {
   String? get error => _error;
 
   Future<void> fetchCities() async {
+    Logger logger=Logger();
+
+    logger.i("loading starts");
     _isLoading = true;
     _error = null;
     notifyListeners();
 
-    print("here1");
+
     try {
-      print("here2");
+
+      logger.i("start calling to fetchCities service method");
       _cities = await _service.fetchCities();
-      print("here3");
+      logger.i("fetchCities service method call successfully  completed");
     } catch (e) {
-      print("here4");
+      logger.e("error: "+e.toString());
       _error = e.toString();
     }
 
     _isLoading = false;
+    logger.i("loading stops");
     notifyListeners();
   }
 }
