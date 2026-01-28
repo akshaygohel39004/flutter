@@ -12,28 +12,30 @@ class CityDetailScreen extends StatelessWidget {
       backgroundColor: Colors.greenAccent,
       appBar: AppBar(title: Text(city.cityName),centerTitle: true,backgroundColor: Colors.blue,),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Card(
-            color: Colors.amber,
-            elevation: 6,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    city.cityName,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                  const SizedBox(height: 12),
-                  Text('ID: ${city.cityId}'),
-                  Text('Population: ${city.population}'),
-                  Text('Total Families: ${city.totalFamilies}'),
-                ],
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Card(
+              color: Colors.amber,
+              elevation: 6,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      city.cityName,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    const SizedBox(height: 12),
+                    Text('ID: ${city.cityId}'),
+                    Text('Population: ${city.population}'),
+                    Text('Total Families: ${city.totalFamilies}'),
+                  ],
+                ),
               ),
             ),
           ),
