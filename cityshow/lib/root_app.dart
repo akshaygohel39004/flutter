@@ -10,7 +10,7 @@ class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => getIt<CityProvider>()..fetchCities(),
+      create: (_) => getIt<CityProvider>(),
       child: const MyApp(),
     );
   }

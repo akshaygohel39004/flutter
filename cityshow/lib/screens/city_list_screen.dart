@@ -4,8 +4,23 @@ import 'package:provider/provider.dart';
 import '../providers/city_provider.dart';
 import 'city_details_screen.dart';
 
-class CityListScreen extends StatelessWidget {
+class CityListScreen extends StatefulWidget {
   const CityListScreen({super.key});
+
+  @override
+  State<CityListScreen> createState() => _CityListScreenState();
+}
+
+class _CityListScreenState extends State<CityListScreen> {
+
+  @override
+  void initState() {
+
+    super.initState();
+
+    context.read<CityProvider>().fetchCities();
+  }
+
 
   @override
   Widget build(BuildContext context) {
