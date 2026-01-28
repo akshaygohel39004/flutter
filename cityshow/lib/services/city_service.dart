@@ -9,7 +9,7 @@ class CityService {
   Future<List<City>> fetchCities() async {
     print("here 5");
     print(ApiConfig.baseUrl);
-    final response = await http.get(Uri.parse(ApiConfig.baseUrl));
+    final response = await http.get(Uri.parse(ApiConfig.baseUrl+'/api/cities'));
     print(response);
     if (response.statusCode == 200) {
       final List data = jsonDecode(response.body);
