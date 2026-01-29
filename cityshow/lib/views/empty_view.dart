@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
-class EmptyCitiesView extends StatelessWidget {
-  final Function fetchCities;
-  const EmptyCitiesView({super.key,required this.fetchCities});
+class EmptyView extends StatelessWidget {
+  final Function fetchingMethod;
+  final String message;
+  const EmptyView({super.key,required this.fetchingMethod,required this.message});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
-          Text("No cities available. Please try again."),
+          Text(this.message),
           SizedBox(height: 20,),
           FloatingActionButton(
-            onPressed: ()=>fetchCities(),
+            onPressed: ()=>fetchingMethod(),
             child: Text("Retry",
               style: TextStyle(color: Colors.red),),
           )

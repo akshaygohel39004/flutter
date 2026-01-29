@@ -1,4 +1,4 @@
-import 'package:cityshow/views/empty_cities_view.dart';
+import 'package:cityshow/views/empty_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/city_provider.dart';
@@ -39,7 +39,10 @@ class _CityListScreenState extends State<CityListScreen> {
           }
 
           if (provider.cities.isEmpty){
-            return EmptyCitiesView(fetchCities: provider.fetchCities);
+            return EmptyView(
+                fetchingMethod: provider.fetchCities,
+                message: "No cities available. Please try again."
+            );
           }
 
           return ListView.builder(
